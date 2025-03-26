@@ -1,0 +1,22 @@
+1. basic operation(add,subs,mul,divide)
+2. logarithm(base 10,natural log)
+3. inverse(a^-1)
+4. power(a^b)
+5. square root
+6. modulus(|n|)
+7. exponential(e^n)
+8. factorial(n!)
+9. average of n number(sum/number)
+10. quadratic equation
+11. permutation(nPr)
+12. combination(nCr)
+13. round off to n decimal points
+14. trigonometry(sin,cos,tan)
+15. inverse trigonometry(sin^-1,cos^-1,tan^-1)
+16. matrix operation(add,substract)
+17. matrix multiplication
+18. convertion of binary system(binary to dec, dec to binary etc....)
+19. complex number(add,substract,modulus)
+20. remainder
+21. lcm
+22. hcf
