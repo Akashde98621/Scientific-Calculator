@@ -8,6 +8,57 @@ void clearScreen() {
     system("clear");
 }
 
+//function for basic operation function
+void basicOperation() {
+    printf("Welcome to Basic Operation Function\n\n");
+    double num1,num2,result = 0;
+    int operator;
+    printf("Enter number 1 : ");
+    scanf("%lf",&num1);
+    printf("Enter number 2 : ");
+    scanf("%lf",&num2);
+    printf(
+        "\nEnter which operation you want to do?\n"
+        "1. Addition\n"
+        "2. Substraction\n"
+        "3. Multiplication\n"
+        "4. Division\n"
+        "\nEnter your choice : "
+    );
+
+    scanf("%d",&operator);
+
+    switch (operator) {
+        case 1 : {
+            result = num1 + num2;
+            break;
+        }
+        case 2 : {
+            result = num1 - num2;
+            break;
+        }
+        case 3 : {
+            result = num1 * num2;
+            break;
+        }
+        case 4 : {
+            if (num2 == 0) {
+                printf("Division by zero is undefined......");
+                return;
+            } else {
+                result = num1 / num2;
+            }
+            break;
+        }
+        default : {
+            printf("Enter a valid input........");
+            return;
+        }
+    }
+    printf("\nThe result is %lf",result);
+}
+
+//funtion for remainder operation
 void remain() {
     printf("Welcome to Remainder Function\n\n");
     int numerator,denominator;
@@ -16,10 +67,56 @@ void remain() {
     printf("Enter the denominator : ");
     scanf("%d",&denominator);
     if (denominator == 0) {
-        printf("Dividing by zero is not defined.");
+        printf("\nDividing by zero is not defined.");
     } else {
-        printf("Remainder from dividing %d and %d is %d.",numerator,denominator,numerator % denominator);
+        printf("\nRemainder from dividing %d and %d is %d.",numerator,denominator,numerator % denominator);
     }
+}
+
+//function to return hcf of two number
+int HCF(int num1,int num2) {
+    //checking if the number is positive or not
+    if (num1 < 0 || num2 < 0) {
+        num1 = abs(num1);
+        num2 = abs(num2);
+    }
+    int hcf = 1,min;
+    if (num1 > num2) {
+        min = num2;
+    } else {
+        min = num1;
+    }
+    for (int i = 2; i <= min; i++) {
+        if (num1 % i == 0 && num2 % i == 0) {
+            hcf = i;
+        }
+    }
+    return hcf;
+}
+
+//function for hcf operation
+void hcf() {
+    printf("Welcome to HCF Function\n\n");
+    int num1,num2,hcf1;
+    printf("Enter number 1 : ");
+    scanf("%d",&num1);
+    printf("Enter number 2 : ");
+    scanf("%d",&num2);
+    hcf1 = HCF(num1,num2);
+    printf("\nThe HCF of %d and %d is %d.",num1,num2,hcf1);
+}
+
+//function for lcm operation
+void lcm() {
+    printf("Welcome to LCM Function\n\n");
+    int num1,num2,hcf1,lcm1;
+    printf("Enter number 1 : ");
+    scanf("%d",&num1);
+    printf("Enter number 2 : ");
+    scanf("%d",&num2);
+    hcf1 = HCF(num1,num2);
+    lcm1 = (num1 * num2) / hcf1;
+    printf("\nThe LCM of %d and %d is %d.",num1,num2,lcm1);
 }
 
 int main() {
@@ -68,7 +165,7 @@ int main() {
         //checking the user input
         switch(choice) {
             case 1 : {
-                //basicOperation();
+                basicOperation();
                 break;
             }
             case 2 : {
@@ -76,11 +173,11 @@ int main() {
                 break;
             }
             case 3 : {
-                //lcm();
+                lcm();
                 break;
             }
             case 4 : {
-                //hcf();
+                hcf();
                 break;
             }
             case 5 : {
