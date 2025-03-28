@@ -33,7 +33,7 @@ void factorial() {
     }
 }
 
-//function for permutation operation
+//function for permutation operations
 void permutation() {
     printf("Welcome to Permutation Function\n\n");
     int n,r,permu;
