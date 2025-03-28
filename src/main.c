@@ -8,6 +8,66 @@ void clearScreen() {
     system("clear");
 }
 
+//function to return factorial of a number
+int fact(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    } else if (n < 0) {
+        return -1;
+    } else {
+        return n * fact(n-1);
+    }
+}
+
+//function for factorial operation
+void factorial() {
+    printf("Welcome to Factorial Function\n\n");
+    int num;
+    printf("Enter number : ");
+    scanf("%d",&num);
+    long long int fact1 = fact(num);
+    if (fact1 == -1) {
+        printf("\nFactorial of %d does not exist.",num);
+    } else {
+        printf("\nThe factorial of %d is %lld.",num,fact1);
+    }
+}
+
+//function for permutation operation
+void permutation() {
+    printf("Welcome to Permutation Function\n\n");
+    int n,r,permu;
+    printf("Enter value of n : ");
+    scanf("%d",&n);
+    printf("Enter value of r : ");
+    scanf("%d",&r);
+    if (n >= 0 && r >= 0 && n >= r) {
+        permu = fact(n)/fact(n-r);
+        printf("\nThe permutation of %dP%d is %d",n,r,permu);
+    } else {
+        printf("\nThe permutation does not exist for the following inputs.");
+    }
+    
+}
+
+//fumction for combination operation
+void combination() {
+    printf("Welcome to Combination Function\n\n");
+    int n,r,combi;
+    printf("Enter value of n : ");
+    scanf("%d",&n);
+    printf("Enter value of r : ");
+    scanf("%d",&r);
+    if (n >= 0 && r >= 0 && n >= r) {
+        combi = fact(n)/(fact(n-r)*fact(r));
+        printf("\nThe combination of %dC%d is %d",n,r,combi);
+    } else {
+        printf("\nThe combination does not exist for the following inputs.");
+    }
+    
+}
+
+
 //function for basic operation function
 void basicOperation() {
     printf("Welcome to Basic Operation Function\n\n");
@@ -119,6 +179,20 @@ void lcm() {
     printf("\nThe LCM of %d and %d is %d.",num1,num2,lcm1);
 }
 
+//function for factors operation
+void factors() {
+    printf("Welcome to Factors Function\n\n");
+    int num;
+    printf("Enter number : ");
+    scanf("%d",&num);
+    printf("\nThe factors of %d is ",num);
+    for (int i = 1; i <= num; i++) {
+        if (num % i == 0) {
+            printf("%d ",i);
+        }
+    }
+}
+
 int main() {
     bool isContinue = false;
     do {
@@ -181,7 +255,7 @@ int main() {
                 break;
             }
             case 5 : {
-                //factor();
+                factors();
                 break;
             }
             case 6 : {
@@ -217,15 +291,15 @@ int main() {
                 break;
             }
             case 14 : {
-                //factorial();
+                factorial();
                 break;
             }
             case 15 : {
-                //permutation();
+                permutation();
                 break;
             }
             case 16 : {
-                //combination();
+                combination();
                 break;
             }
             case 17 : {
