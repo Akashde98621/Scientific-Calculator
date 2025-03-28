@@ -335,6 +335,7 @@ void matrixMultiplication() {
     } 
 }
 
+//function for quadratic equation operation
 void quadraticEquation() {
     printf("Welcome to Matrix Operation\n\n");
     double a,b,c,d;
@@ -364,7 +365,57 @@ void quadraticEquation() {
     }
 }
 
+//function for complex number operation
+void complexNumber() {
+    printf("Welcome to Complex Operation\n\n");
+    int choice;
+    printf("Which operation you want to perform?\n"
+        "1. Addition of two complex number\n"
+        "2. Substraction of two complex number\n"
+        "3. Modulus of a complex number.\n"
+        "\nEnter your choice : "
+    );
+    scanf("%d",&choice);
+    clearScreen();
+    if (choice == 1 || choice == 2) {
+        double a1,b1,a2,b2;
+        printf("Enter your inputs in the form of a + ib\n");
+        printf("\nEnter first complex number\n");
+        printf("Enter real part (a1) : ");
+        scanf("%lf",&a1);
+        printf("Enter imaginary part (b1) : ");
+        scanf("%lf",&b1);
+        clearScreen();
+        printf("Enter your inputs in the form of a + ib\n");
+        printf("\nEnter second complex number\n");
+        printf("Enter real part (a2) : ");
+        scanf("%lf",&a2);
+        printf("Enter imaginary part (b2) : ");
+        scanf("%lf",&b2);
+        clearScreen();
+        printf("The first complex number is %.2lf + %.2lfi\n",a1,b1);
+        printf("The second complex number is %.2lf + %.2lfi\n",a2,b2);
+        if (choice == 1) {
+            printf("\nThe addition of the two given complex number is %.2lf + %.2lfi",a1+a2,b1+b2);
+        } else {
+            printf("\nThe difference of the two given complex number is %.2lf + %.2lfi",a1-a2,b1-b2);
+        }
+    } else if (choice == 3) {
+        double a,b;
+        printf("Enter your inputs in the form of a + ib\n");
+        printf("\nEnter first complex number\n");
+        printf("Enter real part (a) : ");
+        scanf("%lf",&a);
+        printf("Enter imaginary part (b) : ");
+        scanf("%lf",&b);
+        clearScreen();
+        printf("The given complex number is %lf + %lfi\n",a,b);
+        double modulus = sqrt(pow(a,2) + pow(b,2));
+        printf("\nThe modulus of given complex equation is %.2lf",modulus);
+    }
+}
 
+//main
 int main() {
     bool isContinue = false;
     do {
@@ -499,7 +550,7 @@ int main() {
                 break;
             }
             case 23 : {
-                //complexNumber();
+                complexNumber();
                 break;
             }
             default : {
@@ -527,7 +578,7 @@ int main() {
             printf("\nYou have entered an invalid input.\nExiting the Scientific Calculator........\n");
         }
     } while (isContinue);
-
+    printf("\nPress any key to exit..........");
     //preventing the terminal to exit until user press enter
     getchar();
     getchar();
