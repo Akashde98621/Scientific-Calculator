@@ -12,6 +12,37 @@ void clearScreen() {
     #endif
 }
 
+
+void scientific_calculator_ascii() {
+    printf("#####################################\n");
+    printf("#  SCIENTIFIC   CALCULATOR          #\n");
+    printf("#  -----------------------          #\n");
+    printf("#  [7] [8] [9]  [/]  [sin]          #\n");
+    printf("#  [4] [5] [6]  [*]  [cos]          #\n");
+    printf("#  [1] [2] [3]  [-]  [tan]          #\n");
+    printf("#  [0] [.] [=]  [+]  [log]          #\n");
+    printf("#  [ ( ] [ ) ]  [^]  [sqrt]         #\n");
+    printf("#####################################\n");
+}
+
+void group() {
+    char arr[6][34] = {
+        {'*','*','*','*', ' ', '*', '*', '*', '*', ' ', '*', '*', '*', '*', ' ', '*', ' ', ' ', '*', ' ', '*', '*', '*', '*',' ', ' ', ' ',' ', '*', ' ', '*', ' ','*'},
+        {'*',' ',' ',' ', ' ', '*', ' ', ' ', '*', ' ', '*', ' ', ' ', '*', ' ', '*', ' ', ' ', '*', ' ', '*', ' ', ' ', '*',' ', ' ', ' ',' ', '*', ' ', '*', ' ','*'},
+        {'*',' ',' ',' ', ' ', '*', '*', '*', '*', ' ', '*', ' ', ' ', '*', ' ', '*', ' ', ' ', '*', ' ', '*', '*', '*', '*',' ', ' ', ' ',' ', '*', ' ', '*', '*','*'},
+        {'*','*','*','*', ' ', '*', '*', ' ', ' ', ' ', '*', ' ', ' ', '*', ' ', '*', ' ', ' ', '*', ' ', '*', ' ', ' ', ' ',' ', '*', '*',' ', '*', ' ', ' ', ' ','*'},
+        {'*',' ',' ','*', ' ', '*', ' ', '*', ' ', ' ', '*', ' ', ' ', '*', ' ', '*', ' ', ' ', '*', ' ', '*', ' ', ' ', ' ',' ', ' ', ' ',' ', '*', ' ', ' ', ' ','*'},
+        {'*','*','*','*', ' ', '*', ' ', ' ', '*', ' ', '*', '*', '*', '*', ' ', '*', '*', '*', '*', ' ', '*', ' ', ' ', ' ',' ', ' ', ' ',' ', '*', ' ', ' ', ' ','*'}
+    };
+
+    for (int i = 0;i < 6; i++) {
+        for (int j = 0; j < 34; j++) {
+            printf("%c ",arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 //function for modulus operation
 void modulus() {
     printf("Welcome to Modulus Function\n\n");
@@ -555,7 +586,7 @@ void quadraticEquation() {
     printf("Enter constant term (c) : ");
     scanf("%lf",&c);
     clearScreen();
-    printf("\nYour equation is %.2lfx^2 + %.2lfx + %.2lf = 0",a,b,c);
+    printf("\nYour equation is %.2lfx^2 + %.2lfx + %.2lf = 0\n",a,b,c);
     d = (b*b - (4*a*c));
     if (d > 0) {
         double root1,root2;
@@ -625,6 +656,9 @@ void complexNumber() {
 
 //main
 int main() {
+    clearScreen();
+    group();
+    scientific_calculator_ascii();
     bool isContinue = false;
     do {
         int choice;
