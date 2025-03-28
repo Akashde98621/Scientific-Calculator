@@ -5,7 +5,36 @@
 
 //function to clear screen
 void clearScreen() {
-    system("clear");
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
+//function for power operation
+void power() {
+    printf("Welcome to Power Function\n\n");
+    double num,pow1;
+    printf("Enter number : ");
+    scanf("%lf",&num);
+    printf("Enter power to be raised : ");
+    scanf("%lf",&pow1);
+    printf("\n%lf to the power raised %lf is %lf.",num,pow1,pow(num,pow1));
+}
+
+//function for suare root operation
+void squareRoot() {
+    printf("Welcome to Square Root Function\n\n");
+    double num;
+    printf("Enter number : ");
+    scanf("%lf",&num);
+    if (num < 0) {
+        printf("\nSquare Root of Negative Numbers does not exist.");
+        return;
+    } else {
+        printf("\nThe Square Root of %lf is %lf.",num,pow(num,0.5));
+    }
 }
 
 //function to return factorial of a number
@@ -193,6 +222,149 @@ void factors() {
     }
 }
 
+//funtion to print a matrix
+void printMatrix(int row,int col,int arr[row][col]) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            printf("%d\t",arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+//function to input values from user in matrix 
+void inputMatrix(int row,int col,int arr[row][col]) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            printf("Enter element at row %d and column %d : ",i+1,j+1);
+            scanf("%d",&arr[i][j]);
+        }
+    }
+}
+
+//function for matrix addition
+void matrixAdd(int row,int col,int arr1[row][col],int arr2[row][col],int result[row][col]) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            result[i][j] = arr1[i][j] + arr2[i][j];
+        }
+    }
+}
+
+//function for matrix substraction
+void matrixSub(int row,int col,int arr1[row][col],int arr2[row][col],int result[row][col]) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            result[i][j] = arr1[i][j] - arr2[i][j];
+        }
+    }
+}
+
+//function for matrix operation
+void matrixOperation() {
+    printf("Welcome to Matrix Operation\n\n");
+    int row,col,choice;
+    printf("Enter the no of rows of Matrix : ");
+    scanf("%d",&row);
+    printf("Enter the no of columns of Matrix : ");
+    scanf("%d",&col);
+    int arr1[row][col],arr2[row][col],result[row][col];
+    clearScreen();
+    printf("\nEnter the Elements of Matrix - 1\n");
+    inputMatrix(row,col,arr1);
+    clearScreen();
+    printf("\nEnter the Elements of Matrix - 2\n");
+    inputMatrix(row,col,arr2);
+    clearScreen();
+    printf("\nWhich Matrix Operation you want to do?\n1.Adding two Matrix\n2.Substracting two Matrix\nEnter you choice : ");
+    scanf("%d",&choice);
+    if (choice == 1) {
+        matrixAdd(row,col,arr1,arr2,result);
+    } else if (choice == 2) {
+        matrixSub(row,col,arr1,arr2,result);
+    } else {
+        printf("\nEnter valid choice........");
+        return;
+    }
+    clearScreen();
+    printf("\nThe Resultant Matrix is \n");
+    printMatrix(row,col,result);
+}
+
+//function for matrix multiplication
+void matrixMul(int row1,int col1,int arr1[row1][col1],int row2,int col2,int arr2[row2][col2],int result[row1][col2]) {
+    for (int i = 0; i < row1; i++) {
+        for (int j = 0; j < col2; j++) {
+            int sum = 0;
+            for (int k = 0; k < col1; k++) {
+                sum += arr1[i][k] * arr2[k][j]; 
+            }
+            result[i][j] = sum;
+        }
+    }
+}
+
+//function for matrix multiplication operation
+void matrixMultiplication() {
+    printf("Welcome to Matrix Multiplication\n\n");
+    int row1,col1,row2,col2;
+    printf("Enter the no of rows of Matrix-1 : ");
+    scanf("%d",&row1);
+    printf("Enter the no of columns of Matrix-1 : ");
+    scanf("%d",&col1);
+    printf("\nEnter the no of rows of Matrix-2 : ");
+    scanf("%d",&row2);
+    printf("Enter the no of columns of Matrix-2 : ");
+    scanf("%d",&col2);
+    if (col1 == row2) {
+        int arr1[row1][col1],arr2[row2][col2],result[row1][col2];
+        clearScreen();
+        printf("\nMatrix Multiplication is possible for the given inputs...\n");
+        printf("\nEnter the Elements of Matrix - 1\n");
+        inputMatrix(row1,col1,arr1);
+        clearScreen();
+        printf("\nEnter the Elements of Matrix - 2\n");
+        inputMatrix(row2,col2,arr2);
+        clearScreen();
+        matrixMul(row1,col1,arr1,row2,col2,arr2,result);
+        printf("\nThe Resultant Matrix is \n");
+        printMatrix(row1,col2,result);
+    } else {
+        printf("\nThe Matrix Multiplication is not possible for the given inputs of rows and columns");
+        return;
+    } 
+}
+
+void quadraticEquation() {
+    printf("Welcome to Matrix Operation\n\n");
+    double a,b,c,d;
+    printf("Enter all inputs in the form ax^2 + bx + c = 0\n");
+    printf("\nEnter coefficient of x^2 (a) : ");
+    scanf("%lf",&a);
+    printf("Enter coefficient of x (b) : ");
+    scanf("%lf",&b);
+    printf("Enter constant term (c) : ");
+    scanf("%lf",&c);
+    clearScreen();
+    printf("\nYour equation is %.2lfx^2 + %.2lfx + %.2lf = 0",a,b,c);
+    d = (b*b - (4*a*c));
+    if (d > 0) {
+        double root1,root2;
+        printf("\nThe roots of the equation exist and unique.\n");
+        root1 = (-b + sqrt(d))/2*a;
+        root2 = (-b - sqrt(d))/2*a;
+        printf("\nThe roots are %.2lf and %.2lf.",root1,root2);
+    } else if (d == 0) {
+        double root;
+        printf("\nThe roots of the equation exist and equal.\n");
+        root = (-b + sqrt(d))/2*a;
+        printf("\nThe root is %.2lf.",root);
+    } else {
+        printf("\nThe roots of the equation does not exist.");
+    }
+}
+
+
 int main() {
     bool isContinue = false;
     do {
@@ -259,11 +431,11 @@ int main() {
                 break;
             }
             case 6 : {
-                //power();
+                power();
                 break;
             }
             case 7 : {
-                //squareRoot();
+                squareRoot();
                 break;
             }
             case 8 : {
@@ -303,7 +475,7 @@ int main() {
                 break;
             }
             case 17 : {
-                //quadraticEquation();
+                quadraticEquation();
                 break;
             }
             case 18 : {
@@ -315,11 +487,11 @@ int main() {
                 break;
             }
             case 20 : {
-                //matrixOperation();
+                matrixOperation();
                 break;
             }
             case 21 : {
-                //matrixMultiplication();
+                matrixMultiplication();
                 break;
             }
             case 22 : {
@@ -357,6 +529,7 @@ int main() {
     } while (isContinue);
 
     //preventing the terminal to exit until user press enter
+    getchar();
     getchar();
 
     return 0;
