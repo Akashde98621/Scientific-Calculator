@@ -12,6 +12,29 @@ void clearScreen() {
     #endif
 }
 
+//function for modulus operation
+void modulus() {
+    printf("Welcome to Modulus Function\n\n");
+    double num;
+    printf("Enter number : ");
+    scanf("%lf",&num);
+    printf("\nThe modulus of %.2lf is %.2lf.",num,fabs(num));
+}
+
+//function for inverse operation
+void inverse() {
+    printf("Welcome to Inverse Function\n\n");
+    double num;
+    printf("Enter number : ");
+    scanf("%lf",&num);
+    if (num == 0) {
+        printf("\nInverse of Zero is undefined.");
+        return;
+    } else {
+        printf("\nThe inverse of %.2lf is %.2lf.",num,pow(num,-1));
+    }
+}
+
 //function for power operation
 void power() {
     printf("Welcome to Power Function\n\n");
@@ -21,6 +44,44 @@ void power() {
     printf("Enter power to be raised : ");
     scanf("%lf",&pow1);
     printf("\n%lf to the power raised %lf is %lf.",num,pow1,pow(num,pow1));
+}
+
+//function for average operation
+void average() {
+    printf("Welcome to Average Function\n\n");
+    double num,sum = 0,aver = 0;
+    int count = 0;
+    bool isContinue = true;
+    while (isContinue) {
+        int choice;
+        printf("Current Sum = %.2lf\nCurrentCount = %d\nCurrent Average =%.2lf\n",sum,count,aver);
+        printf("\nEnter a number : ");
+        scanf("%lf",&num);
+        count++;
+        sum += num;
+        aver = sum/count;
+        printf("\nWant to add more numbers?\n1.Yes\n2.No\nEnter your choice : ");
+        scanf("%d",&choice);
+        clearScreen();
+        if (choice == 1) {
+            continue;
+        } else if (choice == 2) {
+            isContinue = false;
+        } else {
+            printf("\nYou have entered an invalid choice.......");
+            return;
+        }
+    }
+    printf("\nThe average of all the numbers input is %.2lf",aver);
+}
+
+//function for roundoff operation
+void roundOff() {
+    printf("Welcome to Roundoff Function\n\n");
+    double num;
+    printf("Enter number : ");
+    scanf("%lf",&num);
+    printf("\nThe modified number is %lf",round(num));
 }
 
 //function for suare root operation
@@ -36,6 +97,114 @@ void squareRoot() {
         printf("\nThe Square Root of %lf is %lf.",num,pow(num,0.5));
     }
 }
+
+//function for trigonometry operation
+void trigonometry() {
+    printf("Welcome to Trigonometry Function\n\n");
+    int choice;
+    double degree,radian;
+    printf("Enter angle in degree : ");
+    scanf("%lf",&degree);
+    radian = (degree * M_PI)/180;
+    printf(
+        "\nWhich trigonometric function you want to find?\n"
+        "1. sin(x)\n"
+        "2. cos(x)\n"
+        "3. tan(x)\n"
+        "Enter your choice : "
+    );
+    scanf("%d",&choice);
+    clearScreen();
+    switch (choice) {
+        case 1 : {
+            printf("\nsin(%lf) = %lf",degree,sin(radian));
+            break;
+        }
+        case 2 : {
+            printf("\ncos(%lf) = %lf",degree,cos(radian));
+            break;
+        }
+        case 3 : {
+            printf("\ntan(%lf) = %lf",degree,tan(radian));
+            break;
+        }
+        default : {
+            printf("\nEnter valid input......");
+        }
+    }
+}
+
+//function for inverse trigonometry operation
+void inverseTrigonometry() {
+    printf("Welcome to Inverse Trigonometry Function\n\n");
+    int choice;
+    printf(
+        "Which inverse trigonometric function you want to find?\n"
+        "1. sin^-1(x)\n"
+        "2. cos^-1(x)\n"
+        "3. tan^-1(x)\n"
+        "Enter your choice : "
+    );
+    double x;
+    scanf("%d",&choice);
+    clearScreen();
+    if (choice == 1 || choice == 2) {
+        printf("Enter any integer from -1 to 1 : ");
+        scanf("%lf",&x);
+        if (x >= -1 || x <= 1) {
+            if (choice == 1) {
+                printf("\nsin^-1(%lf) = %lf radians",x,asin(x));
+            } else {
+                printf("\ncos^-1(%lf) = %lf radians",x,acos(x));
+            }
+        } else {
+            printf("\nEnter valid range......");
+            return;
+        }
+    } else if (choice == 3) {
+        printf("Enter any real integer : ");
+        scanf("%lf",&x);
+        printf("\ntan^-1(%lf) = %lf radians",x,atan(x));
+    } else {
+        printf("\nEnter valid choice.....");
+    }
+}
+
+//function for hyperbolic function operation
+void hyperbolic() {
+    printf("Welcome to Inverse Trigonometry Function\n\n");
+    int choice;
+    double x;
+    printf("Enter x : ");
+    scanf("%lf",&x);
+    printf(
+        "Which trigonometric function you want to find?\n"
+        "1. sinh(x)\n"
+        "2. cosh(x)\n"
+        "3. tanh(x)\n"
+        "Enter your choice : "
+    );
+    scanf("%d",&choice);
+    clearScreen();
+    switch (choice) {
+        case 1 : {
+            printf("\nsinh(%lf) = %lf",x,sinh(x));
+            break;
+        }
+        case 2 : {
+            printf("\ncosh(%lf) = %lf",x,cosh(x));
+            break;
+        }
+        case 3 : {
+            printf("\ntanh(%lf) = %lf",x,tanh(x));
+            break;
+        }
+        default : {
+            printf("\nEnter valid input......");
+        }
+    }
+}
+
 
 //function to return factorial of a number
 int fact(int n) {
@@ -220,6 +389,45 @@ void factors() {
             printf("%d ",i);
         }
     }
+}
+
+//function for logarithm ooperation
+void logarithm() {
+    printf("Welcome to Logartithm Function\n\n");
+    int choice;
+    double num;
+    printf("1. Natuaral log ln(x)\n2. Log base 2 log2(x)\n3. Log base 10 log10(x)\n\nEnter your choice : ");
+    scanf("%d",&choice);
+    clearScreen();
+    printf("Enter number whose log you want to find : ");
+    scanf("%lf",&num);
+    if (num < 0) {
+        printf("\nLog of negative numbers does not exist.");
+        return;
+    } else if (num == 0) {
+        printf("\nLog of zero is infinity.");
+        return;
+    } else {
+        if (choice == 1) {
+            printf("\nThe Natural log of %.2lf is %lf",num,log(num));
+        } else if (choice == 2) {
+            printf("\nThe log base 2 of %.2lf is %lf",num,log2(num));
+        } else if (choice == 3) {
+            printf("\nThe log base 10 of %.2lf is %lf",num,log10(num));
+        } else {
+            printf("\nPlease enter valid choice.......");
+            return;
+        }
+    }
+}
+
+//function for exponential function
+void exponential() {
+    printf("Welcome to Exponential Function\n\n");
+    double num;
+    printf("Enter number : ");
+    scanf("%lf",&num);
+    printf("\ne^%lf is %lf",num,exp(num));
 }
 
 //funtion to print a matrix
@@ -437,7 +645,7 @@ int main() {
             "10. Logarithm (Base 10, Natural Log)\n"
             "11. Exponential (e^n)\n"
             "12. Average of n numbers\n"
-            "13. Round off to n decimal points\n"
+            "13. Round off to nearest integer\n"
             "14. Factorial (n!)\n"
             "15. Permutation (nPr)\n"
             "16. Combination (nCr)\n"
@@ -446,7 +654,7 @@ int main() {
             "19. Inverse Trigonometry (sin^-1, cos^-1, tan^-1)\n"
             "20. Matrix Operation (Addition, Substraction)\n"
             "21. Matrix Multiplication\n"
-            "22. Conversion of Number System (Binary, Decimal, Hexadecimal etc)\n"
+            "22. Hyperbolic Function\n"
             "23. Complex Number Operation (Addition, Substraction, Modulus)\n"
             "\n"
             "Enter your choice : "
@@ -490,27 +698,27 @@ int main() {
                 break;
             }
             case 8 : {
-                //modulus();
+                modulus();
                 break;
             }
             case 9 : {
-                //inverse();
+                inverse();
                 break;
             }
             case 10 : {
-                //logarithm();
+                logarithm();
                 break;
             }
             case 11 : {
-                //exponential();
+                exponential();
                 break;
             }
             case 12 : {
-                //average();
+                average();
                 break;
             }
             case 13 : {
-                //roundOff();
+                roundOff();
                 break;
             }
             case 14 : {
@@ -530,11 +738,11 @@ int main() {
                 break;
             }
             case 18 : {
-                //trigonometry();
+                trigonometry();
                 break;
             }
             case 19 : {
-                //inverseTrigonometry();
+                inverseTrigonometry();
                 break;
             }
             case 20 : {
@@ -546,7 +754,7 @@ int main() {
                 break;
             }
             case 22 : {
-                //conversion();
+                hyperbolic();
                 break;
             }
             case 23 : {
