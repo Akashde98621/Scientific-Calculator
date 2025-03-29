@@ -658,7 +658,9 @@ void complexNumber() {
 int main() {
     clearScreen();
     group();
+    printf("\n");
     scientific_calculator_ascii();
+    printf("\nWelcome to Scientific Calculator made by Group-14\n");
     bool isContinue = false;
     do {
         int choice;
