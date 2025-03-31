@@ -12,19 +12,6 @@ void clearScreen() {
     #endif
 }
 
-
-void scientific_calculator_ascii() {
-    printf("#####################################\n");
-    printf("#  SCIENTIFIC   CALCULATOR          #\n");
-    printf("#  -----------------------          #\n");
-    printf("#  [7] [8] [9]  [/]  [sin]          #\n");
-    printf("#  [4] [5] [6]  [*]  [cos]          #\n");
-    printf("#  [1] [2] [3]  [-]  [tan]          #\n");
-    printf("#  [0] [.] [=]  [+]  [log]          #\n");
-    printf("#  [ ( ] [ ) ]  [^]  [sqrt]         #\n");
-    printf("#####################################\n");
-}
-
 void group() {
     char arr[6][34] = {
         {'*','*','*','*', ' ', '*', '*', '*', '*', ' ', '*', '*', '*', '*', ' ', '*', ' ', ' ', '*', ' ', '*', '*', '*', '*',' ', ' ', ' ',' ', '*', ' ', '*', ' ','*'},
@@ -658,8 +645,6 @@ void complexNumber() {
 int main() {
     clearScreen();
     group();
-    printf("\n");
-    scientific_calculator_ascii();
     printf("\nWelcome to Scientific Calculator made by Group-14\n");
     bool isContinue = false;
     do {
