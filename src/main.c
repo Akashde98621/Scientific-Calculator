@@ -30,6 +30,18 @@ void group() {
     }
 }
 
+void scientific_calculator_ascii() {
+    printf("#####################################\n");
+    printf("#  SCIENTIFIC   CALCULATOR          #\n");
+    printf("#  -----------------------          #\n");
+    printf("#  [7] [8] [9]  [/]  [sin]          #\n");
+    printf("#  [4] [5] [6]  [*]  [cos]          #\n");
+    printf("#  [1] [2] [3]  [-]  [tan]          #\n");
+    printf("#  [0] [.] [=]  [+]  [log]          #\n");
+    printf("#  [ ( ] [ ) ]  [^]  [sqrt]         #\n");
+    printf("#####################################\n");
+}
+
 //function for modulus operation
 void modulus() {
     printf("Welcome to Modulus Function\n\n");
@@ -645,7 +657,8 @@ void complexNumber() {
 int main() {
     clearScreen();
     group();
-    printf("\nWelcome to Scientific Calculator made by Group-14\n");
+    printf("\nWelcome to Scientific Calculator made by Group-14\n\n");
+    scientific_calculator_ascii();
     bool isContinue = false;
     do {
         int choice;
